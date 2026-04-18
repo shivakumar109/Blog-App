@@ -1,0 +1,117 @@
+### User Register
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+     "firstName":"Shiva",
+     "lastName":"kumar",
+     "email":"shiav@gmail.com",
+     "password":"shiva",
+     "profileImageUrl":"http://example/dp.png"
+}
+
+### user login`
+POST http://localhost:4000/common-api/login
+Content-Type: application/json
+
+{
+     "email":"author1@gmail.com",
+     "password":"author1"
+}
+
+###logout
+GET http://localhost:4000/common-api/logout
+
+
+### Author Register
+POST http://localhost:4000/author-api/users
+Content-Type: application/json
+
+{
+     "firstName":"author1",
+     "lastName":"author1",
+     "email":"author1@gmail.com",
+     "password":"author1",
+     "profileImageUrl":"http://example/dp1.png"
+}
+
+### author login
+# POST http://localhost:4000/author-api/authenticate
+# Content-Type: application/json
+
+# {
+#      "email":"shiavreddy@gmail.com",
+#      "password":"shiva",
+#      "role":"AUTHOR"
+# }
+
+### create artical
+POST http://localhost:4000/author-api/article
+Content-Type: application/json
+
+{
+     "title":"JAVA2",
+     "category":"programming",
+     "content":"thi is java  article"
+}
+
+### read artical by author
+GET http://localhost:4000/author-api/articles
+
+### read artical by user
+GET http://localhost:4000/user-api/article/69b6e1067faf15e69e2f603d
+
+### update the artical
+PUT http://localhost:4000/author-api/articles
+Content-Type: application/json
+
+{
+     "articleId":"69c4ec4d36b35f8fa20e3300",
+     "title":"Python",
+     "category":"programming",
+     "content":"updated content"
+}
+### soft delete the article
+
+PATCH http://localhost:4000/author-api/articles/69c4ec4d36b35f8fa20e3300/status
+Content-Type: application/json
+
+{ 
+     "isArticalActive": true
+}
+
+
+### get article by user
+GET http://localhost:4000/user-api/articles
+
+### add comment to article
+
+PUT http://localhost:4000/user-api/articleComment 
+Content-Type: application/json
+
+{
+     "articleId":"69c4ec4d36b35f8fa20e3300",
+     "comment":"good"
+}
+
+
+###Test Request
+GET http://localhost:4000/test
+
+###block  by admin
+PUT http://localhost:4000/admin-api/blockuser/69afa441b8a0760514b2cf15
+
+###unblock  by admin
+PUT http://localhost:4000/admin-api/unblockuser/69afa441b8a0760514b2cf15
+
+### updatepassword
+PUT http://localhost:4000/common-api/change-password
+Content-Type: application/json
+
+{
+     "email":"user1@gmail.com",
+     "currentPassword":"user1",
+     "newPassword":"user1"
+}
+###
+GET http://localhost:4000/common-api/check-auth
