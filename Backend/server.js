@@ -11,7 +11,7 @@ config() //process.env
 //create express application
 const  app=exp()
 //use cors middleware
-app.use(cors({ origin:['http://localhost:5173'],credentials:true}));
+app.use(cors({ origin:["http://localhost:5173" ,"https://blog-app-ym51.onrender.com"],credentials:true}));
 //add body parser middleware
 app.use(exp.json());
 //add c
