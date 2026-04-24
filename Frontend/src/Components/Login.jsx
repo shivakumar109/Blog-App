@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import {useAuth} from '../Store/AuthStore'
 import { useNavigate ,NavLink } from 'react-router'
 import { toast } from 'react-hot-toast'
+import api from "../APIs/axios";
 function Login() {
   const { register, handleSubmit, formState: { errors } } = useForm()
   const login=useAuth(state=>state.login)

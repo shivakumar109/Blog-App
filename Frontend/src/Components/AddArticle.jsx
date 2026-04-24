@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useLocation } from 'react-router';
 import toast from 'react-hot-toast';
+import api from "../APIs/axios";
 
 function AddArticle() {
 const { register, handleSubmit, formState: { errors }, reset } = useForm();
@@ -22,24 +23,22 @@ const onSubmit = async (data) => {
 try {
 if (editData) {
 // EDIT MODE
-await axios.put(
-'http://localhost:4000/author-api/articles',
-{
-articleId: editData._id,
-...data
-},
-{ withCredentials: true }
+await api.put(
+  "/author-api/articles",
+  {
+    articleId: editData._id,
+    ...data
+  }
 );
 
 toast.success("update  success")
 
   } else {
     //  ADD MODE
-    await axios.post(
-      'http://localhost:4000/author-api/article',
-      data,
-      { withCredentials: true }
-    );
+    await api.post(
+  "/author-api/article",
+  data
+);
 
   }
 

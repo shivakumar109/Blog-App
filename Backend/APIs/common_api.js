@@ -11,11 +11,11 @@ commonRoute.post("/login",async(req,res)=>{
      //call authenticate service
      let {token,user}= await authenticate(authorCred);
      //save token as httponly cookie
-     res.cookie("token",token,{
-          httpOnly:true,
-          sameSite:"lax",
-          secure:false,
-     });
+     res.cookie("token", token, {
+          httpOnly: true,
+          secure: true,        
+          sameSite: "None",    
+});
      //send res
      res.status(201).json({message:"login sucess",payload:user});
 })
@@ -24,11 +24,11 @@ commonRoute.post("/login",async(req,res)=>{
 commonRoute.get("/logout",async(req,res)=>{
      //clear all the cookies
      //must match orginal settings
-     res.clearCookie('token',{
-          httpOnly:true,
-          secure:false,
-          sameSite:'lax'
-     });
+     res.clearCookie("token", {
+          httpOnly: true,
+          secure: true,
+          sameSite: "None",
+});
      res.status(200).json({message:"loged out sucessfully"})
 })
 

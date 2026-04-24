@@ -2,6 +2,7 @@ import {useEffect,useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { useAuth } from '../Store/AuthStore'
+import api from "../APIs/axios";
 function Articles() {
   const navigate = useNavigate();
   const user = useAuth((state) => state.currentUser);
@@ -15,7 +16,7 @@ function Articles() {
     const getAuthorArticles = async () => {
       setLoading(true);
       try {
-        const res = await axios.get('http://localhost:4000/author-api/articles', { withCredentials: true });
+        const res = await api.get("/author-api/articles");
         console.log(res.data.payload)
         setArticles(res.data.payload);
       } catch (err) {
@@ -30,11 +31,9 @@ function Articles() {
 
   const handleDelete = async (id) => {
   try {
-    await axios.patch(
-      `http://localhost:4000/author-api/articles/${id}/status`,
-      { isArticalActive: false },
-      { withCredentials: true }
-    );
+    await api.patch(`/author-api/articles/${id}/status`, {
+  isArticalActive: false
+});
 
     //  Remove from UI instantly
     setArticles(prev => prev.filter(a => a._id !== id));

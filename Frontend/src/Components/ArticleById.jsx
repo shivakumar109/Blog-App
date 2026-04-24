@@ -1,9 +1,9 @@
 import { useParams, useLocation, useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form'
-import axios from "axios";
 import { useAuth } from "../Store/AuthStore"
 import toast from "react-hot-toast";
+import api from "../APIs/axios";
 function ArticleById() {
      const { id } = useParams();
      const location = useLocation();
@@ -17,7 +17,7 @@ function ArticleById() {
           const getArticle = async () => {
                setLoading(true);
                try {
-                    const res = await axios.get(`http://localhost:4000/user-api/article/${id}`, { withCredentials: true });
+                    const res = await api.get(`/user-api/article/${id}`);
                     setArticle(res.data.payload);
                } catch (err) {
                     setError(err.response?.data?.error);
@@ -31,11 +31,10 @@ function ArticleById() {
   try {
     commentObj.articleId = article._id;
 
-    const res = await axios.put(
-      "http://localhost:4000/user-api/articleComment", // ✅ correct URL
-      commentObj,
-      { withCredentials: true }
-    );
+    const res = await api.put(
+  "/user-api/articleComment",
+  commentObj
+);
 
     if (res.status === 200) {
       toast.success(res.data.message);

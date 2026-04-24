@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import {useNavigate } from 'react-router'
 import axios from 'axios'
 import {toast} from "react-hot-toast"
+import api from "../APIs/axios";
 function Register() {
   const { register, handleSubmit ,formState:{errors} } = useForm()
   const [loading,setLoading]=useState(false)
@@ -26,8 +27,8 @@ function Register() {
       //console.log(userData)
       if (role==='user'){
         //make api request to user
-        let resObj=await axios.post("http://localhost:4000/user-api/users",formData)
-        console.log("resObj=",resObj)
+        let resObj = await api.post("/author-api/users", formData);
+        //console.log("resObj=",resObj)
         if (resObj.status===201){
           toast.success('Successfully registered')
           navigate('/login')
@@ -35,7 +36,7 @@ function Register() {
       }
       if (role==='author'){
         //make api request to
-        let resObj=await axios.post("http://localhost:4000/author-api/users",formData)
+        let resObj = await api.post("/user-api/users", formData);
         console.log("resObj=",resObj)
         if (resObj.status===201){
           toast.success('Successfully registered')

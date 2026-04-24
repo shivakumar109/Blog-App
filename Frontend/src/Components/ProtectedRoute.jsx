@@ -1,5 +1,6 @@
 import { useAuth } from "../Store/AuthStore.js";
 import { Navigate } from "react-router";
+import api from "../APIs/axios";
 
 function ProtectedRoute({ children, allowedRoles }) {
   //get user login status from store

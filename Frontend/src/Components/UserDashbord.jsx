@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../Store/AuthStore'
 import { useNavigate } from 'react-router'
 import {toast} from 'react-hot-toast'
-import axios from 'axios'
 import { set } from 'react-hook-form'
+import api from "../APIs/axios";
 function UserDashbord() {
   //get logout function from store
   const logout=useAuth(state=>state.logout)
@@ -20,8 +20,7 @@ function UserDashbord() {
     setLoading(true)
     //fetch articals
     try{
-      let res=await axios.get("http://localhost:4000/user-api/articles",{withCredentials:true})
-      //console.log(res)
+      const res = await api.get("/user-api/articles");
       setArticles(res.data.payload);
       }catch (err) {
         setError(err.response?.data?.error || "Something went wrong");

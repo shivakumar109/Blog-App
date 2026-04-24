@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate ,NavLink} from 'react-router';
 import {useAuth} from '../Store/AuthStore'
 import toast from 'react-hot-toast';
+import api from "../APIs/axios";
 function AuthorDashboard() {
   //read articals of his own
   //display them in the form cards
