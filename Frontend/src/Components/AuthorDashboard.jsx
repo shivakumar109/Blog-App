@@ -7,11 +7,11 @@ function AuthorDashboard() {
   //display them in the form cards
   const logout=useAuth(state=>state.logout)
   const navigate=useNavigate();
-  const onLogout=async()=>{
-    await logout();
-    toast.success("Logout success")
-    navigate('/login');
-  }
+  // const onLogout=async()=>{
+  //   await logout();
+  //   toast.success("Logout success")
+  //   navigate('/login');
+  // }
   return (
     <div className="flex justify-between items-center mt-8">
       <h1 className="text-2xl font-bold">Author</h1>
@@ -24,11 +24,7 @@ function AuthorDashboard() {
           to="/addartical">
           Add Article
         </NavLink>
-      <button
-        onClick={onLogout}
-        className="bg-blue-500 text-white px-5 py-2 rounded-lg ">
-        Logout
-      </button>
+      
     </div>
   )
 }

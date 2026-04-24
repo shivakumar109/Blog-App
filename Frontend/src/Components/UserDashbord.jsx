@@ -32,11 +32,11 @@ function UserDashbord() {
     getArticals();
   },[])
   //perform logout and navigate
-  const onLogout=async()=>{
-    await logout();
-    toast.success("Logout success")
-    navigate('/login');
-  }
+  // const onLogout=async()=>{
+  //   await logout();
+  //   toast.success("Logout success")
+  //   navigate('/login');
+  // }
   const navigateToArticleByID = (articleObj) => {
     navigate(`/article/${articleObj._id}`, {
       state: articleObj,
@@ -49,12 +49,7 @@ function UserDashbord() {
     <div className="flex justify-between items-center mb-8">
       <h1 className="text-2xl font-bold">Welcome {currentUser.firstName}</h1>
       {currentUser && (<img src={currentUser.profileImageUrl} alt="profile" />)}
-      <button
-        onClick={onLogout}
-        className="bg-blue-500 text-white px-5 py-2 rounded-lg"
-      >
-        Logout
-      </button>
+      
 
     </div>
 

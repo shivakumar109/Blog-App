@@ -47,7 +47,7 @@ authorRoute.post('/article',verifyToken("AUTHOR"),checkAuthor,async(req,res)=>{
      //save
      let createArticalDoc = await newArticalDoc.save()
      //send res
-     return res.status(401).json({messang:"artical created"})
+     return res.status(200).json({messang:"artical created"})
 })
 //read articals of author(protected)
 authorRoute.get("/articles",verifyToken("AUTHOR"),checkAuthor,async(req,res)=>{
@@ -76,7 +76,7 @@ authorRoute.put("/articles",verifyToken("AUTHOR"),checkAuthor,async(req,res)=>{
           new:true
      })
      //send res
-     return res.status(400).json({message:'artical updated',payload:updatedArticle})
+     return res.status(200).json({message:'artical updated',payload:updatedArticle})
 })
 //delete(soft delete) article(Protected route)
 authorRoute.patch("/articles/:id/status", verifyToken("AUTHOR"), async (req, res) => {
