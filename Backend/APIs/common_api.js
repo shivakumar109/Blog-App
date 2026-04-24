@@ -4,7 +4,6 @@ import { authenticate } from "../Services/auth_service.js";
 import { UserTypeModel } from "../Models/user_model.js";
 import {verifyToken} from "../Middlewares/verify_token.js"
 export const commonRoute=exp.Router();
-const isProduction = process.env.NODE_ENV === "production";
 //login
 commonRoute.post("/login",async(req,res)=>{
      let authorCred = req.body;
@@ -13,9 +12,10 @@ commonRoute.post("/login",async(req,res)=>{
      //save token as httponly cookie
      res.cookie("token", token, {
      httpOnly: true,
-     secure: isProduction,                      // false for localhost
-     sameSite: isProduction ? "None" : "lax",   // lax for localhost
-     });
+     secure: true,        // MUST (you are on HTTPS)
+     sameSite: "None",    // MUST (cross-origin)
+     path: "/"
+});
      //send res
      res.status(201).json({message:"login sucess",payload:user});
 })
@@ -26,8 +26,8 @@ commonRoute.get("/logout",async(req,res)=>{
      //must match orginal settings
      res.clearCookie("token", {
      httpOnly: true,
-     secure: isProduction,
-     sameSite: isProduction ? "None" : "lax",
+     secure: true,
+     sameSite: "None",
      });
      res.status(200).json({message:"loged out sucessfully"})
 })

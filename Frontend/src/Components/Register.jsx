@@ -62,57 +62,59 @@ function Register() {
     return <p className="text-center text-xl">Loading...</p>
   }
   return (
-    <div className=" bg-gray-200 m-10 p-5 rounded">
-      <h1 className="text-2xl text-center mb-6 ">Register</h1>
+  <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    
+    <div className="w-full max-w-2xl bg-white p-6 md:p-10 rounded-xl shadow-lg">
+      
+      <h1 className="text-2xl text-center mb-6">Register</h1>
+
       {error && <p className="text-red-500 text-center">{error}</p>}
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+
+      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6 w-full">
+
         {/* Role selection */}
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <p className="text-lg">Select Role</p>
-            <input type="radio"  value="user" {...register("role",{required:true})}/> User
-            <input  type="radio" value="author" {...register("role",{required:true})}/> Author
+          <input type="radio" value="user" {...register("role",{required:true})}/> User
+          <input type="radio" value="author" {...register("role",{required:true})}/> Author
           {errors.role && <p className="text-red-500 text-sm text-center">Role is required</p>}
         </div>
+
         {/* First and Last name */}
-        <div className="flex flex-col md:flex-row gap-6">
-          First Name:<input
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
+          First Name:
+          <input
             type="text"
             placeholder="First name"
             {...register("firstName",{required:true , minLength:4})}
-            className="flex-1 p-3 bg-gray-300 rounded"
+            className="w-full p-3 bg-gray-200 rounded"
           />
-          {errors?.firstName?.type==="required" && <p className="text-red-500">*firstName  Required</p>}
+          {errors?.firstName?.type==="required" && <p className="text-red-500">*firstName Required</p>}
           {errors?.firstName?.type==="minLength" && <p className="text-red-500">*minLength 4</p>}
-          LastName:<input
+
+          LastName:
+          <input
             type="text"
             placeholder="Last name"
-          {...register("lastName" ,{required:true , minLength:4})}
-            className="flex-1 p-3 bg-gray-300 rounded"
+            {...register("lastName" ,{required:true , minLength:4})}
+            className="w-full p-3 bg-gray-200 rounded"
           />
-          
-          {errors?.lastName?.type==="required" && <p className="text-red-500">*lastName  Required</p>}
+          {errors?.lastName?.type==="required" && <p className="text-red-500">*lastName Required</p>}
           {errors?.lastName?.type==="minLength" && <p className="text-red-500">*minLength 4</p>}
         </div>
+
         {/* Email */}
-        Email:<input
+        Email:
+        <input
           type="email"
           placeholder="Email"
-          {...register("email",{required:true}
-          )}
-          className="p-3 bg-gray-300 rounded"
+          {...register("email",{required:true})}
+          className="w-full p-3 bg-gray-200 rounded"
         />
         {errors?.email?.type==="required" && <p className="text-red-500">*email Required</p>}
-        {/* Password */}  
-        Password:<input
-          type="password"
-          placeholder="Password"
-          {...register("password",{required:true , minLength:4})}
-          className="p-3 bg-gray-300 rounded"
-        />
-          {errors?.password?.type==="required" && <p className="text-red-500">*password Required</p>}
-          {errors?.password?.type==="minLength" && <p className="text-red-500">*minLength 4</p>}
-        {/* Profile Image */}
-        Profing Img:
+
+        {/* Password */}
+        Password:
         <input
         type="file"
         accept="image/png, image/jpeg"
@@ -147,15 +149,19 @@ function Register() {
                 />
                 </div>
             )}
+
         {/* Button */}
         <button
           type="submit"
-          className="bg-sky-500 text-white py-2 px-6 rounded w-40 mx-auto">
+          className="bg-sky-500 text-white py-2 px-6 rounded w-full md:w-40 mx-auto hover:bg-sky-600 transition"
+        >
           Register
         </button>
+
       </form>
     </div>
-)
+  </div>
+);
 }
 
 export default Register

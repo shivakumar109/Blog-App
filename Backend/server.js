@@ -10,12 +10,14 @@ import cors from 'cors';
 config() //process.env
 //create express application
 const  app=exp()
+//adding trust proxy
+app.set("trust proxy", 1);
 //use cors middleware
-app.use(cors({ origin:["http://localhost:5173" ,"https://blog-app-ym51.onrender.com"],credentials:true}));
+app.use(cors({ origin:"https://blog-app-ym51.onrender.com",credentials:true}));
+//add cookieParser
+app.use(cookieParser());
 //add body parser middleware
 app.use(exp.json());
-//add c
-app.use(cookieParser());
 //connect APIS
 app.use('/user-api', userRoute);
 app.use('/author-api', authorRoute);
