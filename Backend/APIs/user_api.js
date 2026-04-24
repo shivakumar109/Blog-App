@@ -11,9 +11,17 @@ export const userRoute=exp.Router();
 
 //Register user     
 userRoute.post("/users", upload.single("profileImageUrl"),async (req, res, next) => {
+        
+
         let cloudinaryResult;
             try {
                 let userObj = req.body;
+                const existingUser = await UserTypeModel.findOne({ email: userObj.email });
+                if (existingUser) {
+                  return res.status(409).json({
+                    message: "Email already exists"
+                  });
+                }
                 //  Step 1: upload image to cloudinary from memoryStorage (if exists)
                 if (req.file) {
                 cloudinaryResult = await uploadToCloudinary(req.file.buffer);
@@ -88,5 +96,5 @@ userRoute.put('/articleComment', verifyToken("USER"), async (req,res)=>{
     return res.status(404).json({message:"Article not found"});
   }
 
-  return res.status(200).json({message:"Comment added"});
+  return res.status(200).json({message:"Comment added",payload:article});
 });

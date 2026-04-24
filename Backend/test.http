@@ -3,11 +3,11 @@ POST http://localhost:4000/user-api/users
 Content-Type: application/json
 
 {
-     "firstName":"Shiva",
-     "lastName":"kumar",
-     "email":"shiav@gmail.com",
+     "firstName":"User3",
+     "lastName":"User3",
+     "email":"user3@gmail.com",
      "password":"shiva",
-     "profileImageUrl":"http://example/dp.png"
+     "profileImageUrl":""
 }
 
 ### user login`

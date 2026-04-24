@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useForm } from 'react-hook-form'
 import axios from "axios";
 import { useAuth } from "../Store/AuthStore"
+import toast from "react-hot-toast";
 function ArticleById() {
      const { id } = useParams();
      const location = useLocation();
@@ -27,15 +28,25 @@ function ArticleById() {
           getArticle();
      }, [id]);
      const addComment = async (commentObj) => {
-          //add artcileId
-          commentObj.articleId = article._id;
-          console.log(commentObj);
-          let res = await axios.put("http://localhost:4000/user-api/articles", commentObj, { withCredentials: true });
-          if (res.status === 200) {
-               toast.success(res.data.message);
-               setArticle(res.data.payload);
-          }
-   };
+  try {
+    commentObj.articleId = article._id;
+
+    const res = await axios.put(
+      "http://localhost:4000/user-api/articleComment", // ✅ correct URL
+      commentObj,
+      { withCredentials: true }
+    );
+
+    if (res.status === 200) {
+      toast.success(res.data.message);
+
+      // ✅ update UI with new comments
+      setArticle(res.data.payload);
+    }
+  } catch (err) {
+    toast.error(err.response?.data?.message || "Failed to add comment");
+  }
+};
   if (loading) return <p >Loading article...</p>;
   if (error) return <p >{error}</p>;
   if (!article) return null;

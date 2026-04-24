@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 function AuthorDashboard() {
   //read articals of his own
   //display them in the form cards
+  const currentUser = useAuth(state => state.currentUser)
   const logout=useAuth(state=>state.logout)
   const navigate=useNavigate();
   // const onLogout=async()=>{
@@ -24,7 +25,13 @@ function AuthorDashboard() {
           to="/addartical">
           Add Article
         </NavLink>
-      
+      {currentUser && (
+  <img
+    src={currentUser.profileImageUrl}
+    alt="profile"
+    className="w-10 h-10 rounded-full object-cover border"
+  />
+)}
     </div>
   )
 }

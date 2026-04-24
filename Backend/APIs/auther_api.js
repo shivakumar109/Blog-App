@@ -14,8 +14,14 @@ export const authorRoute=exp.Router();
 authorRoute.post("/users", upload.single("profileImageUrl"), async (req, res, next) => {
   let cloudinaryResult;
   try {
-    //getb user obj
+    
     let userObj = req.body;
+    const existingUser = await UserTypeModel.findOne({ email: userObj.email });
+    if (existingUser) {
+      return res.status(409).json({
+        message: "Email already exists"
+      });
+    }
     //  Step 1: upload image to cloudinary from memoryStorage (if exists)
     if (req.file) {
       cloudinaryResult = await uploadToCloudinary(req.file.buffer);

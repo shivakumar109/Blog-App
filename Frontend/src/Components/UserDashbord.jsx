@@ -48,7 +48,13 @@ function UserDashbord() {
     {/* Top Bar */}
     <div className="flex justify-between items-center mb-8">
       <h1 className="text-2xl font-bold">Welcome {currentUser.firstName}</h1>
-      {currentUser && (<img src={currentUser.profileImageUrl} alt="profile" />)}
+      {currentUser && (
+  <img
+    src={currentUser.profileImageUrl}
+    alt="profile"
+    className="w-20 h-20 rounded-full object-cover border"
+  />
+)}
       
 
     </div>
@@ -73,7 +79,7 @@ function UserDashbord() {
             {article.content}
           </p>
           {/* Button at bottom */}
-              <button className=' mt-auto pt-4 bg-green-200' onClick={() => navigateToArticleByID(article)}>
+              <button className="mt-auto px-5 py-2 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition" onClick={() => navigateToArticleByID(article)}>
                 Read Article →
               </button>
         </div>

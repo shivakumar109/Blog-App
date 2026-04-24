@@ -25,7 +25,7 @@ app.use('/common-api',commonRoute);
 //connect to db
 const connectDb=async()=>{
      try{
-     await connect(process.env.DB_URL);
+     await connect(process.env.ATLAS_URL);
      console.log("DB connection successful");
      app.listen(process.env.PORT,()=>console.log("server 4000 started"));
      }catch(err){
