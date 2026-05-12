@@ -16,8 +16,11 @@ commonRoute.post("/login",async(req,res)=>{
      sameSite: "None",    // MUST (cross-origin)
      path: "/"
 });
-     //send res
-     res.status(201).json({message:"login sucess",payload:user});
+     res.status(201).json({
+    message: "login success",
+    payload: user,
+    token: token
+  });
 })
 
 //logout
@@ -25,10 +28,11 @@ commonRoute.get("/logout",async(req,res)=>{
      //clear all the cookies
      //must match orginal settings
      res.clearCookie("token", {
-     httpOnly: true,
-     secure: true,
-     sameSite: "None",
-     });
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  path: "/"
+});
      res.status(200).json({message:"loged out sucessfully"})
 })
 

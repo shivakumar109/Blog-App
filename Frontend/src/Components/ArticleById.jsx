@@ -39,7 +39,7 @@ function ArticleById() {
     if (res.status === 200) {
       toast.success(res.data.message);
 
-      // ✅ update UI with new comments
+      //  update UI with new comments
       setArticle(res.data.payload);
     }
   } catch (err) {

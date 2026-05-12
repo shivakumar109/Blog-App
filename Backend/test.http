@@ -3,9 +3,9 @@ POST http://localhost:4000/user-api/users
 Content-Type: application/json
 
 {
-     "firstName":"User3",
-     "lastName":"User3",
-     "email":"user3@gmail.com",
+     "firstName":"User5",
+     "lastName":"User5",
+     "email":"user5@gmail.com",
      "password":"shiva",
      "profileImageUrl":""
 }
@@ -15,8 +15,8 @@ POST http://localhost:4000/common-api/login
 Content-Type: application/json
 
 {
-     "email":"author1@gmail.com",
-     "password":"author1"
+     "email":"author4@gmail.com",
+     "password":"shiva"
 }
 
 ###logout
@@ -28,10 +28,10 @@ POST http://localhost:4000/author-api/users
 Content-Type: application/json
 
 {
-     "firstName":"author1",
-     "lastName":"author1",
-     "email":"author1@gmail.com",
-     "password":"author1",
+     "firstName":"author4",
+     "lastName":"author4",
+     "email":"author4@gmail.com",
+     "password":"shiva",
      "profileImageUrl":"http://example/dp1.png"
 }
 

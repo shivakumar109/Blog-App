@@ -116,6 +116,14 @@ function Register() {
         {/* Password */}
         Password:
         <input
+          type="password"
+          placeholder="Password"
+          {...register("password",{required:true})}
+          className="w-full p-3 bg-gray-200 rounded"
+        />
+        {errors?.email?.type==="required" && <p className="text-red-500">*password Required</p>}
+        Profile
+        <input
         type="file"
         accept="image/png, image/jpeg"
         {...register("profileImageUrl")}

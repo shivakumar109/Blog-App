@@ -13,7 +13,7 @@ const  app=exp()
 //adding trust proxy
 app.set("trust proxy", 1);
 //use cors middleware
-app.use(cors({ origin:"https://blog-app-ym51.onrender.com",credentials:true}));
+app.use(cors({ origin:["https://blog-app-ym51.onrender.com", "http://localhost:5173"],credentials:true}));
 //add cookieParser
 app.use(cookieParser());
 //add body parser middleware
@@ -39,7 +39,9 @@ connectDb();
 //dealing with invalid path
 app.use((req,res,next)=>{
      //console.log(req.url)
-     res.json({message: `${req.url} is invalid path`});
+     res.status(404).json({
+  message: `${req.url} is invalid path`
+});
 })
 
 //error handling middle ware
