@@ -27,7 +27,7 @@ function Register() {
       //console.log(userData)
       if (role==='user'){
         //make api request to user
-        let resObj = await api.post("/author-api/users", formData);
+        let resObj = await api.post("/user-api/users", formData);
         //console.log("resObj=",resObj)
         if (resObj.status===201){
           toast.success('Successfully registered')
@@ -36,7 +36,7 @@ function Register() {
       }
       if (role==='author'){
         //make api request to
-        let resObj = await api.post("/user-api/users", formData);
+        let resObj = await api.post("/author-api/users", formData);
         console.log("resObj=",resObj)
         if (resObj.status===201){
           toast.success('Successfully registered')
