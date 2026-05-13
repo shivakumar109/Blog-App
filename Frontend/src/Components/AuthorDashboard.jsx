@@ -26,7 +26,7 @@ function AuthorDashboard() {
           to="/addartical">
           Add Article
         </NavLink>
-      {currentUser && (
+      {currentUser?.profileImageUrl && (
   <img
     src={currentUser.profileImageUrl}
     alt="profile"
