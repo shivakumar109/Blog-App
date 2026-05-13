@@ -47,49 +47,46 @@ function Articles() {
 const handleEdit = (article) => {
 navigate('/addartical', { state: article });
 };
- return (
-  <div>
-    <h2>My Articles</h2>
+  return(
+  <div className="p-4 md:p-8 max-w-6xl mx-auto">
+    <h2 className="text-2xl font-bold mb-6 text-center md:text-left">My Articles</h2>
 
-    {loading && <p>Loading...</p>}
-    {error && <p style={{ color: "red" }}>{error}</p>}
+    {loading && <p className="text-center text-gray-500">Loading...</p>}
+    {error && <p className="text-center text-red-500">{error}</p>}
 
     {articles.length === 0 && !loading && (
-      <p>No articles found</p>
+      <p className="text-center text-gray-500">No articles found</p>
     )}
 
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     {articles.map((article) => (
-  <div key={article._id} style={{
-    border: "1px solid #ccc",
-    padding: "10px",
-    margin: "10px",
-    borderRadius: "8px"
-  }}>
-    <h3>{article.title}</h3>
-    <p><b>Category:</b> {article.category}</p>
-    <p>{article.content}</p>
-    <small>
+  <div key={article._id} className="bg-white p-6 shadow-md rounded-xl border border-gray-100 flex flex-col transition hover:shadow-lg">
+    <h3 className="text-xl font-bold mb-2 text-gray-800">{article.title}</h3>
+    <p className="text-blue-500 text-sm font-semibold mb-3">{article.category}</p>
+    <p className="text-gray-600 mb-4 flex-grow">{article.content}</p>
+    <small className="text-gray-400 block mb-4">
       Created: {new Date(article.createdAt).toLocaleString()}
     </small>
 
     {/*  Buttons */}
-    <div style={{ marginTop: "10px" }}>
+    <div className="flex gap-3 mt-auto">
       <button 
         onClick={() => handleEdit(article)}
-        style={{ marginRight: "10px", background: "orange", color: "white" }}
+        className="flex-1 bg-yellow-500 hover:bg-yellow-600 text-white py-2 rounded-lg transition"
       >
         Edit
       </button>
 
       <button 
         onClick={() => handleDelete(article._id)}
-        style={{ background: "red", color: "white" }}
+        className="flex-1 bg-red-500 hover:bg-red-600 text-white py-2 rounded-lg transition"
       >
         Delete
       </button>
     </div>
   </div>
 ))}
+</div>
   </div>
 );
 }

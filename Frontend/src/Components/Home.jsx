@@ -6,11 +6,11 @@ function Home() {
     <div className="min-h-screen bg-gray-50">
 
       {/* Hero Section */}
-      <div className="text-center py-20 px-6 bg-white shadow-sm">
+      <div className="text-center py-10 md:py-20 px-4 md:px-6 bg-white shadow-sm">
         <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
           Welcome to ArticleHub ✍️
         </h1>
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto mb-6">
+        <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto mb-6">
           Discover, read, and share amazing articles on technology, programming,
           and more. Whether you're a reader or an author, this platform is built for you.
         </p>
@@ -27,7 +27,7 @@ function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="py-16 px-6">
+      <div className="py-10 md:py-16 px-4 md:px-6">
         <h2 className="text-3xl font-semibold text-center mb-10">
           Why Choose Us?
         </h2>

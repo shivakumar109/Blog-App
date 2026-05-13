@@ -15,7 +15,7 @@ function AuthorDashboard() {
   //   navigate('/login');
   // }
   return (
-    <div className="flex justify-between items-center mt-8">
+    <div className="flex flex-col md:flex-row justify-between items-center gap-4 mt-8 px-4 md:px-6 max-w-7xl mx-auto">
       <h1 className="text-2xl font-bold">Author</h1>
       <NavLink className="bg-blue-500 text-white px-5 py-2 rounded-lg "
           to="/articles">

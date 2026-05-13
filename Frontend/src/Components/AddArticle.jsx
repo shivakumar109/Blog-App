@@ -53,7 +53,7 @@ toast.success("update  success")
 
 };
 
-return ( <div className="bg-gray-200 p-10 rounded m-10"> <div className="bg-gray-200 p-10 rounded"> <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+return ( <div className="p-4 md:p-8 mt-6 max-w-3xl mx-auto"> <div className="bg-white shadow-md p-6 md:p-10 rounded-xl border"> <h2 className="text-2xl font-bold mb-6 text-center">{editData ? "Edit Article" : "Create New Article"}</h2> <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
 
 
       {/* Title */}

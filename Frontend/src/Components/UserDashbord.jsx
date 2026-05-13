@@ -42,10 +42,10 @@ function UserDashbord() {
     });
   };
   return (
-  <div className="p-6">
+  <div className="p-4 md:p-6 max-w-7xl mx-auto">
 
     {/* Top Bar */}
-    <div className="flex justify-between items-center mb-8">
+    <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-8">
       <h1 className="text-2xl font-bold">Welcome {currentUser.firstName}</h1>
       {currentUser?.profileImageUrl && (
   <img
@@ -59,13 +59,13 @@ function UserDashbord() {
     </div>
 
     {/* Articles Grid */}
-    <h1 className="text-2xl font-bold">Articles</h1>
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <h1 className="text-2xl font-bold mb-4 text-center md:text-left">Articles</h1>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       {articles.map((article) => (
         <div
           key={article._id}
-          className="bg-white shadow-lg p-6 rounded-xl hover:shadow-xl transition"
+          className="bg-white shadow-lg p-6 rounded-xl hover:shadow-xl transition flex flex-col h-full"
         >
           <h2 className="text-xl font-semibold mb-2">
             {article.title}
@@ -74,11 +74,11 @@ function UserDashbord() {
           <p className="text-blue-500 font-medium mb-2">
             {article.category}
           </p>
-          <p className="text-gray-600 text-sm">
+          <p className="text-gray-600 text-sm mb-4 flex-grow">
             {article.content}
           </p>
           {/* Button at bottom */}
-              <button className="mt-auto px-5 py-2 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition" onClick={() => navigateToArticleByID(article)}>
+              <button className="mt-auto w-full md:w-auto px-5 py-2 bg-blue-600 text-white rounded-xl shadow-md hover:bg-blue-700 transition" onClick={() => navigateToArticleByID(article)}>
                 Read Article →
               </button>
         </div>

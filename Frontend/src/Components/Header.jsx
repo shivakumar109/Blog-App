@@ -19,7 +19,7 @@ logout();
 navigate('/login');
 };
 
-return ( <div className='flex justify-between bg-gray-500'>
+return ( <div className='flex flex-col sm:flex-row items-center justify-between bg-gray-500 p-4 sm:p-0'>
 
 
   {/* Logo */}
@@ -27,11 +27,12 @@ return ( <div className='flex justify-between bg-gray-500'>
     width="80px"
     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQXjKCEQw9pb4LaNJzpBhDZzZi1KI5LIcMGA&s"
     alt="logo"
+    className="mb-4 sm:mb-0"
   />
 
   {/* Navbar */}
   <nav>
-    <ul className='flex gap-10 p-5 font-bold text-black'>
+    <ul className='flex flex-wrap justify-center items-center gap-4 sm:gap-10 sm:p-5 font-bold text-black'>
 
       {/* Home */}
       <li>
